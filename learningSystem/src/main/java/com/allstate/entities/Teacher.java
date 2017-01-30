@@ -1,5 +1,7 @@
 package com.allstate.entities;
 
+import com.allstate.enums.Department;
+import com.allstate.enums.Gender;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,20 +12,23 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "students")
+@Table(name = "teacher")
 @Data
-public class Student {
+public class Teacher {
+
     private int id;
     private int version;
-    private String email;
+    private String name;
+    private Gender gender;
+    private int age;
     private Date created;
     private Date modified;
 
-    public Student() {
-    }
+    public Teacher(){
 
-    public Student(String email) {
-        this.email = email;
+    }
+    public Teacher(String name){
+        this.name = name;
     }
 
     @Id
@@ -43,13 +48,13 @@ public class Student {
         this.version = version;
     }
 
-    @Size(min = 3)
+    @Size(min = 1)
     @NotNull
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String email) {
+        this.name = name;
     }
 
     @CreationTimestamp
@@ -67,4 +72,26 @@ public class Student {
     public void setModified(Date modified) {
         this.modified = modified;
     }
+
+    @Column(columnDefinition = "ENUM('MALE','FEMALE')")
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    public Gender getGender() {
+        return gender;
+    }
+    public void setDepartment(Gender gender) {
+        this.gender = gender;
+    }
+
+
+    @NotNull
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
 }
+
+
