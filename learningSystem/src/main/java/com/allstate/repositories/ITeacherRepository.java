@@ -5,7 +5,10 @@ import com.allstate.entities.Teacher;
 import com.allstate.enums.Gender;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface ITeacherRepository extends CrudRepository<Teacher, Integer> {
-    public Teacher findByAge(int name);
-    public  Teacher findAllTeachersByGender(String gender);
+    public Teacher findByName(String name);
+    public List<Teacher> findByGender(Gender gender);
+    public List<Teacher> findByAgeGreaterThan(int age);
 }

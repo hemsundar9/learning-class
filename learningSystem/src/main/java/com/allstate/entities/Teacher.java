@@ -1,7 +1,7 @@
 package com.allstate.entities;
 
-import com.allstate.enums.Department;
 import com.allstate.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -23,6 +24,7 @@ public class Teacher {
     private int age;
     private Date created;
     private Date modified;
+    private List<Klass> klasses;
 
     public Teacher(){
 
@@ -79,7 +81,7 @@ public class Teacher {
     public Gender getGender() {
         return gender;
     }
-    public void setDepartment(Gender gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -90,6 +92,15 @@ public class Teacher {
     }
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @OneToMany(mappedBy = "teacher")
+    @JsonIgnore
+    public List<Klass> getKlasses() {
+        return klasses;
+    }
+    public void setKlasses(List<Klass> klasses) {
+        this.klasses = klasses;
     }
 
 }

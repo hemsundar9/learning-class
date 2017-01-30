@@ -1,8 +1,8 @@
 package com.allstate.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import com.allstate.entities.Class;
+import com.allstate.entities.Klass;
 
-public interface IClassRepository extends CrudRepository<Class, Integer> {
-    public Class findByName(String name);
+public interface IClassRepository extends CrudRepository<Klass, Integer> {
+    public Klass findByName(String name);
 }

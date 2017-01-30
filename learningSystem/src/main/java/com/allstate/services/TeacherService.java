@@ -6,6 +6,8 @@ import com.allstate.repositories.ITeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeacherService {
     private ITeacherRepository teacherRepository;
@@ -24,8 +26,18 @@ public class TeacherService {
         return this.teacherRepository.findOne(id);
     }
 
-    public Iterable<Teacher> findAllTeachersByGender(String gender){
-        return this.teacherRepository.findAll(gender);
+    public List<Teacher> findAllTeachersByGender(Gender gender){
+        return this.teacherRepository.findByGender(gender);
+    }
+    public List<Teacher> findByGender(Gender gender){
+        return this.teacherRepository.findByGender(gender);
+    }
+
+    public List<Teacher> findByAgeGreaterThan(int age){
+        return this.teacherRepository.findByAgeGreaterThan(age);
+    }
+    public Teacher findByName(String name){
+        return this.teacherRepository.findByName(name);
     }
 
 }

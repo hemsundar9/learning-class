@@ -12,9 +12,9 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "classes")
+@Table(name = "klasses")
 
-public class Class {
+public class Klass {
     private int id;
     private int version;
     private String name;
@@ -24,11 +24,12 @@ public class Class {
     private double fee;
     private Date created;
     private Date modified;
+    private Teacher teacher;
 
-    public Class() {
+    public Klass() {
     }
 
-    public Class(String name, Date semester, int credits, Department department, double fee) {
+    public Klass(String name, Date semester, int credits, Department department, double fee) {
         this.name = name;
         this.semester = semester;
         this.credits = credits;
@@ -112,5 +113,14 @@ public class Class {
     }
     public void setModified(Date modified) {
         this.modified = modified;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="teacher_id")
+    public Teacher getTeacher() {
+        return teacher;
+    }
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

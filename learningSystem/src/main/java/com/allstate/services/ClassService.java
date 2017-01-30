@@ -3,7 +3,7 @@ package com.allstate.services;
 import com.allstate.repositories.IClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.allstate.entities.Class;
+import com.allstate.entities.Klass;
 
 @Service
 public class ClassService {
@@ -14,15 +14,15 @@ public class ClassService {
         this.classRepository = classRepository;
     }
 
-    public Class create(Class aClass){
+    public Klass create(Klass aClass){
         return this.classRepository.save(aClass);
     }
 
-    public Class findById(int id){
+    public Klass findById(int id){
         return this.classRepository.findOne(id);
     }
 
-    public Class findByName(String name){
+    public Klass findByName(String name){
         return this.classRepository.findByName(name);
     }
 }
